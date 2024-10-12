@@ -60,7 +60,7 @@ const displayAllpets=(pets)=>{
 
 
             <div class="border-2 border-gray-500 py-1 px-3 rounded-2xl flex justify-center items-center ">
-              <button  onclick="my_modal_1.showModal()" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
+              <button onclick="petDetails('${pet.petId}')" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
             </div>
 
 
@@ -74,6 +74,76 @@ const displayAllpets=(pets)=>{
     });
 
 }
+
+const petDetails= async(id)=>{
+ const response = await fetch(`https://openapi.programming-hero.com/api/peddy/pet/${id}`)
+ const data = await response.json()
+ console.log(data.petData);
+ const modalContainer= document.getElementById('modal-container')
+ modalContainer.innerHTML=`
+ <dialog id="my_modal_1" class="modal">
+ <div class="modal-box">
+   <div class=" p-5 w-[430px] h-[740px] ">
+     <img class="w-full rounded-3xl" src="${data.petData.image}" alt="">
+
+     <h1 class="pt-3 text-[20px] font-bold">Name:${data.petData.pet_name}</h1>
+     <div class="card-option ">
+
+       <div class="flex gap-3 items-center mt-1">
+         <img src="images/ci1.png" alt="">
+     <h1 class="text-[16px] text-gray-500">Breed:${data.petData.breed} </h1>
+       </div>
+
+
+       <div class="flex gap-3 items-center mt-1">
+         <img src="images/ci2.png" alt="">
+     <h1 class="text-[16px] text-gray-500">Birth${data.petData.date_of_birth}:</h1>
+       </div>
+
+
+       <div class="flex gap-3 items-center mt-1">
+         <img src="images/ci3.png" alt="">
+     <h1 class="text-[16px] text-gray-500">Gender:${data.petData.gender} </h1>
+       </div>
+
+       <div class="flex gap-3 items-center mt-1">
+         <img src="images/ci3.png" alt="">
+     <h1 class="text-[16px] text-gray-500">Vaccinated status:${data.petData.vaccinated_status}</h1>
+       </div>
+
+
+       <div class="flex gap-3 items-center mt-1">
+         <img src="images/ci4.png" alt="">
+     <h1 class="text-[16px] text-gray-500">Price :${data.petData.price} $</h1>
+       </div>
+       <hr class="border-gray-500 border-[2px] my-5">
+
+       <div>
+         <h1 class="text-justify">Details Information:</h1>
+         <p>${data.petData.pet_details}</p>
+       </div>
+
+   </div>
+   <div class="modal-action">
+     <form method="dialog">
+     
+         <button class="btn flex justify-center">Cancel</button>
+       
+     </form>
+   </div>
+ </div>
+
+
+
+   
+
+  </div>
+</dialog>
+`
+ my_modal_1.showModal()
+
+}
+
 
 const showModal=()=>{
     const detailsContainer= document.getElementById('details-container')
@@ -224,7 +294,7 @@ const displayDog=(pets)=>{
 
 
             <div class="border-2 border-gray-500 py-1 px-3 rounded-2xl flex justify-center items-center ">
-              <button onclick="my_modal_1.showModal()" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
+              <button onclick="petDetails('${pet.petId}')" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
             </div>
 
 
@@ -313,7 +383,7 @@ const displayCats=(pets)=>{
 
 
             <div class="border-2 border-gray-500 py-1 px-3 rounded-2xl flex justify-center items-center ">
-              <button onclick="my_modal_1.showModal()" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
+              <button onclick="petDetails('${pet.petId}')" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
             </div>
 
 
@@ -400,7 +470,7 @@ const displayRabbits=(pets)=>{
 
 
             <div class="border-2 border-gray-500 py-1 px-3 rounded-2xl flex justify-center items-center ">
-              <button onclick="my_modal_1.showModal()" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
+              <button onclick="petDetails('${pet.petId}')" class="font-bold text-[#0E7A81] text-[20px]">Details</button>
             </div>
 
 
@@ -567,7 +637,7 @@ sortByPrice.addEventListener('click',()=>{
                     clearInterval(countdownInterval);
                     popup.style.display = 'none';
                     overlay.style.display = 'none';
-                    adoptButton.textContent = 'Adopted'; 
+                    adoptButton.textContent = ''; 
                     adoptButton.disabled = true; 
                 }
             }, 1000);
