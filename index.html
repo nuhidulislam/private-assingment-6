@@ -177,7 +177,7 @@
 
     <div class="max-w-[576px] grid grid-cols-2 gap-5 lg:max-w-[1200px]  lg:h-[100px] lg:mx-auto lg:flex lg:justify-between lg:items-center">
       <div class=" w-[200px] border-[3px] border-gray-400 rounded-xl">
-        <button onclick="categoryDog() " class="flex gap-2 items-center justify-center p-2 w-full">
+        <button id="category-dog" onclick="showDog()" class="flex gap-2 items-center justify-center p-2 w-full">
           <img class="w-[50px] h-[50px]" src="images/dog.png" alt="">
           <h1 class="font-bold text-2xl">Dogs</h1>
         </button>
@@ -185,7 +185,7 @@
       </div>
 
       <div class=" w-[200px] border-[3px] border-gray-400 rounded-xl">
-        <button onclick="categoryCats()"   class="flex gap-2 items-center justify-center p-2 w-full">
+        <button onclick="showCat()"   class="flex gap-2 items-center justify-center p-2 w-full">
           <img class="w-[50px] h-[50px]" src="images/cat.png" alt="">
           <h1 class="font-bold text-2xl">Cats</h1>
         </button>
@@ -194,7 +194,7 @@
 
 
       <div class=" w-[200px] border-[3px] border-gray-400 rounded-xl">
-        <button onclick="categoryRabbits()" class="flex gap-2 items-center justify-center p-2 w-full">
+        <button onclick="showRabbit()" class="flex gap-2 items-center justify-center p-2 w-full">
           <img class="w-[50px] h-[50px]" src="images/rabbits.png" alt="">
           <h1 class="font-bold text-2xl">Rabbits</h1>
         </button>
@@ -204,7 +204,7 @@
 
 
       <div class=" w-[200px] border-[3px] border-gray-400 rounded-xl">
-        <button onclick="categoryBirds()" class="flex gap-2 items-center justify-center p-2 w-full">
+        <button onclick="showBirds()" class="flex gap-2 items-center justify-center p-2 w-full">
           <img class="w-[50px] h-[50px]" src="images/birds.png" alt="">
           <h1 class="font-bold text-2xl">Birds</h1>
         </button>
@@ -237,8 +237,16 @@
 
 
    <!-- dynamic section start here -->
+   <div id="spinner-id" class=" w-full h-300px">
+    <h1 class="text-center text-4xl font-bold">Loading Data........</h1>
+    <div id="spinner">
+      
+
+    </div>
+  </div>
 
    <div class="  lg:w-[1200px] lg:mx-auto lg:flex    ">
+
     <div id="pet-card-container" class="lg:w-[900px]  lg:justify-between lg:grid lg:grid-cols-3">
 
     
@@ -248,6 +256,7 @@
     <div id="send-pet-img" class="w-[300px]  grid grid-cols-2 " >
     
     </div>
+    
     
 
    </div>

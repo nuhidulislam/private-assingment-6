@@ -150,13 +150,27 @@ const sendPetImg=(petimg)=>{
 
 // categoryDog
 
+
+const showDog=()=>{
+  
+  document.getElementById('pet-card-container').innerHTML=" ";
+  document.getElementById('spinner-id').style.display='block';
+
+  setTimeout(function(){
+    categoryDog()
+    document.getElementById('spinner-id').style.display='none'
+
+  },3000)
+}
+
+
 const categoryDog=async()=>{
+
     const response= await fetch(`https://openapi.programming-hero.com/api/peddy/category/dog`)
     const data= await response.json();
     // displaDog(data)
     displayDog(data.data);
-    showLoading()
-   
+
     
 }
 
@@ -228,12 +242,24 @@ const displayDog=(pets)=>{
 
 // category Cats
 
+const showCat=()=>{
+  
+  document.getElementById('pet-card-container').innerHTML=" ";
+  document.getElementById('spinner-id').style.display='block';
+
+  setTimeout(function(){
+    categoryCats()
+    document.getElementById('spinner-id').style.display='none'
+
+  },3000)
+}
+
 const categoryCats=async()=>{
     const response= await fetch(`https://openapi.programming-hero.com/api/peddy/category/cat`)
     const data= await response.json();
     // displaDog(data)
     displayCats(data.data);  
-    showLoading() 
+  
 }
 
 
@@ -304,13 +330,24 @@ const displayCats=(pets)=>{
 
 
 // category Rabbits
+const showRabbit=()=>{
+  
+  document.getElementById('pet-card-container').innerHTML=" ";
+  document.getElementById('spinner-id').style.display='block';
+
+  setTimeout(function(){
+    categoryRabbits()
+    document.getElementById('spinner-id').style.display='none'
+
+  },3000)
+}
 
 const categoryRabbits=async()=>{
     const response= await fetch(`https://openapi.programming-hero.com/api/peddy/category/rabbit`)
     const data= await response.json();
     // displaDog(data)
     displayRabbits(data.data);
-    showLoading()
+  
 }
 
 
@@ -380,6 +417,17 @@ const displayRabbits=(pets)=>{
 
 
 // category bird
+const showBirds=()=>{
+  
+  document.getElementById('pet-card-container').innerHTML=" ";
+  document.getElementById('spinner-id').style.display='block';
+
+  setTimeout(function(){
+    categoryBirds()
+    document.getElementById('spinner-id').style.display='none'
+
+  },3000)
+}
 
 const categoryBirds=async()=>{
     const response= await fetch(`https://openapi.programming-hero.com/api/peddy/category/bird`)
@@ -392,7 +440,7 @@ const categoryBirds=async()=>{
 
 const displayBirds=(data)=>{
     if(data==''){
-      showLoading()
+     
         document.getElementById('pet-card-container').innerHTML=''
         const PetCardContainer= document.getElementById('pet-card-container')
         const div=document.createElement('div')
